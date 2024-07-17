@@ -7,7 +7,7 @@ class MathGame:
         self.master = master
         master.title("Math Game")
         master.configure(borderwidth=10, relief='ridge', bg="#F9C7BE")
-        master.geometry("550x300")
+        master.geometry("1000x700") #w h
 
         self.welcome_screen()
         
@@ -17,20 +17,20 @@ class MathGame:
         self.welcome_frame.pack(fill=BOTH, expand=True) # Frame will adjust automatically
 
         # Create difficulty buttons
-        label = Label(self.welcome_frame, text="Please select your difficulty level", font=("Helvetica", 16), bg="#a9b9c7")
+        label = Label(self.welcome_frame, text="Please select your difficulty level", font=("Helvetica", 16), bg="#F9C7BE")
         label.pack(pady=20)
 
-        button_easy = Button(self.welcome_frame, text="Easy", command=self.run_easy, bg="#CE6A6C")
+        button_easy = Button(self.welcome_frame, text="Easy", command=self.run_easy, bg="#CE6A6C", height=6, width=20, fg="white")
         button_easy.pack(pady=10)
 
-        button_medium = Button(self.welcome_frame, text="Medium", command=self.run_medium, bg="#CE6A6C")
+        button_medium = Button(self.welcome_frame, text="Medium", command=self.run_medium, bg="#CE6A6C", height=6, width=20, fg="white")
         button_medium.pack(pady=10)
 
-        button_hard = Button(self.welcome_frame, text="Hard", command=self.run_hard, bg="#CE6A6C")
+        button_hard = Button(self.welcome_frame, text="Hard", command=self.run_hard, bg="#CE6A6C", height=6, width=20, fg="white")
         button_hard.pack(pady=10)
 
-        button_quit = Button(self.master, text="Exit", command=self.close_window, bg="#CE6A6C")
-        button_quit.pack()
+        button_quit = Button(self.welcome_frame, text="Exit", command=self.close_window, bg="#EDADA3")
+        button_quit.pack(pady=100)
 
     def run_easy(self):
         self.welcome_frame.pack_forget()  # Hide welcome screen
@@ -53,11 +53,13 @@ class MathGame:
     def run_hard_level(self):
         self.create_math_problem("hard")
 
+    def create_math_problem(self, level):
+        # Placeholder for creating math problems according to difficulty level
+        print(f"Running {level} level math problem")
+
     # Exit button
     def close_window(self): 
         self.master.destroy()
-
-    
 
 root = Tk()
 app = MathGame(root)
